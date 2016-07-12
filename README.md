@@ -1,5 +1,8 @@
 # Babel setup
-Simplest babel setup for a single transform (async)
+Simplest babel setup for a single transform (async).
+
+We are using the single transform: `transform-async-to-generator`, although it is included in stage 3, because we are targetting `node v6` and do not want to transpile all other ES2015 features, only async/await.
+
 
 *eslint is installed globally for editor, 
 so we need to `sudo npm i eslint-plugin-babel -g`,
@@ -8,6 +11,7 @@ because it is a peer dependancy*
 ## TODO
 
 - eslint does not seem to be picking up `.babelrc`.
+- Review npm run script targets.
 
 ## Usage
 Run with `babel-node`:
