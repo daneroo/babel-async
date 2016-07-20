@@ -1,16 +1,29 @@
 # Babel setup
 Simplest babel setup for a single transform (async).
 
-We are using the single transform: `transform-async-to-generator`, although it is included in stage 3, because we are targetting `node v6` and do not want to transpile all other ES2015 features, only async/await.
+We are using the single transform: `transform-async-to-generator`, 
+although it is included in stage 3, because we are targetting `node v6` 
+and do not want to transpile all other ES2015 features, only async/await.
 
+## Dependencies
 
-*eslint is installed globally for editor, 
-so we need to `sudo npm i eslint-plugin-babel -g`,
-because it is a peer dependancy*
+- `babel-cli`: babel itself
+- `babel-eslint`: the module we tell eslint to use as a parser 
+- `babel-plugin-transform-async-to-generator`: the transorm we wish to use
+- `eslint`: eslint itself
+- `eslint-plugin-babel": An eslint plugin companion to babel-eslint which changes the built in rules to support experimental features, `async/await` in our case
+- `.babelrc`:   "plugins": ["transform-async-to-generator"]
+- `.eslintrc`:
+  - "parser": "babel-eslint"; which parser eslint should use.
+  - "plugins": ["babel"] : override a few built-in rules for experimental features
+  - "rules:
+    - "generator-star-spacing": 0, disable old rule
+    - "babel/generator-star-spacing": 1, enable new rule
+
+*This now works with eslint is installed locally (project) for editor, *
 
 ## TODO
 
-- eslint does not seem to be picking up `.babelrc`.
 - Review npm run script targets.
 
 ## Usage
